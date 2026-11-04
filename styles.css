@@ -1,0 +1,1093 @@
+
+/* ==========================================================================
+   INDUSTRIAL PROCESS REPORT — STYLESHEET
+   Estilo corporativo industrial (Siemens / SAP) y motor de impresión A4 única
+   ========================================================================== */
+
+/* Variables de tema corporativo */
+:root {
+  --primary-navy: #0f2d52;
+  --primary-dark: #091b33;
+  --secondary-blue: #1a4f89;
+  --accent-blue: #0284c7;
+  --border-color: #cbd5e1;
+  --border-dark: #94a3b8;
+  --bg-page: #e2e8f0;
+  --bg-sheet: #ffffff;
+  --bg-alt: #f8fafc;
+  --bg-header-band: #f1f5f9;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --focus-ring: #0284c7;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Reset y Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------------------------------------------
+   BARRA SUPERIOR DE ACCIONES (SOLO PANTALLA)
+   -------------------------------------------------------------------------- */
+.top-action-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--primary-dark);
+  color: #ffffff;
+  padding: 0.6rem 1.5rem;
+  border-bottom: 3px solid var(--accent-blue);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.brand-logo {
+  display: block;
+  width: min(300px, 55vw);
+  height: 56px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.actions-zone {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Botones de acción */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 0.45rem 0.85rem;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--accent-blue);
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+.btn-primary:hover {
+  background-color: #0369a1;
+}
+
+/* --------------------------------------------------------------------------
+   HOJA PRINCIPAL DEL INFORME (PANTALLA)
+   -------------------------------------------------------------------------- */
+.report-sheet {
+  max-width: 1240px;
+  margin: 1.25rem auto 2.5rem;
+  background-color: var(--bg-sheet);
+  border: none;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+/* 1. ENCABEZADO GENERAL */
+.report-header {
+  border: 1px solid var(--border-dark);
+  background-color: var(--bg-sheet);
+}
+
+.header-main-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.75rem;
+  background-color: var(--primary-navy);
+  color: #ffffff;
+  border-bottom: 2px solid var(--accent-blue);
+}
+
+.company-logo-text {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.logo-symbol {
+  color: var(--accent-blue);
+  font-size: 0.95rem;
+}
+
+.sheet-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-align: center;
+}
+
+.sheet-subtitle {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.4px;
+}
+
+.header-metadata-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.4fr 1.2fr 1.6fr 1.2fr;
+  gap: 0.5rem;
+  padding: 0.45rem 0.75rem;
+  background-color: var(--bg-header-band);
+}
+
+.meta-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.meta-field label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+  letter-spacing: 0.3px;
+}
+
+.meta-field input,
+.meta-field select {
+  font-family: var(--font-sans);
+  font-size: calc(0.8rem + 1pt);
+  font-weight: 600;
+  color: var(--text-main);
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 0.25rem 0.45rem;
+  height: 28px;
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.meta-field input:focus,
+.meta-field select:focus {
+  border-color: var(--focus-ring);
+  box-shadow: 0 0 0 1px var(--focus-ring);
+}
+
+/* --------------------------------------------------------------------------
+   ESTRUCTURA DE SECTORES
+   -------------------------------------------------------------------------- */
+.sector-block {
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-sheet);
+  border-radius: 2px;
+}
+
+.sector-title-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--secondary-blue);
+  color: #ffffff;
+  padding: 0.3rem 0.65rem;
+}
+
+.sector-number {
+  background-color: #ffffff;
+  color: var(--primary-navy);
+  font-size: 0.7rem;
+  font-weight: 800;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+}
+
+.sector-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.sector-tagline {
+  font-size: 0.68rem;
+  color: #cbd5e1;
+  margin-left: auto;
+  font-weight: 400;
+}
+
+/* Inputs generales */
+input[type="number"],
+input[type="text"],
+textarea {
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input[type="number"] {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  padding: 0.2rem 0.35rem;
+  height: 24px;
+  font-size: calc(0.8rem + 1pt);
+  width: 100%;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input {
+  text-align: center;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--focus-ring);
+  box-shadow: 0 0 0 1px var(--focus-ring);
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 0.3rem 0.45rem;
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+/* --------------------------------------------------------------------------
+   SECTOR 1: PRENSAS (PRENSA 1 Y PRENSA 2 COMPARATIVO SIMULTÁNEO)
+   -------------------------------------------------------------------------- */
+.prensas-dual-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  padding: 0.45rem;
+  background-color: var(--bg-alt);
+}
+
+.prensa-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.prensa-header {
+  background-color: var(--primary-navy);
+  color: #ffffff;
+  text-align: center;
+  padding: 0.25rem 0.4rem;
+  border-radius: 2px;
+}
+
+.prensa-header h4 {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.moldes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.3rem;
+}
+
+.mold-card {
+  min-width: 0;
+  border: 1px solid var(--border-color);
+  padding: 0.2rem;
+  background-color: #f8fafc;
+}
+
+.mold-card legend {
+  padding: 0 0.15rem;
+  color: var(--primary-navy);
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.mold-diagram {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 1fr);
+  aspect-ratio: 1;
+  border: 1px solid var(--border-dark);
+  background-color: #ffffff;
+}
+
+.mold-corner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.1rem;
+  min-width: 0;
+  padding: 0.1rem;
+  background-color: transparent;
+}
+
+.mold-center label {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.mold-corner span {
+  display: none;
+}
+
+.mold-diagram::after {
+  grid-area: 3 / 2;
+  align-self: end;
+  justify-self: center;
+  margin-bottom: 0.5mm;
+  color: var(--primary-navy);
+  content: "↓";
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.mold-corner input,
+.mold-center input {
+  width: 100%;
+  min-width: 0;
+  height: 27px;
+  padding: 0.1rem 0.15rem;
+  font-size: calc(1rem + 1pt);
+  text-align: center;
+}
+
+.corner-top-left {
+  grid-area: 1 / 1;
+}
+
+.corner-top-right {
+  grid-area: 1 / 3;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.corner-bottom-left {
+  grid-area: 3 / 1;
+  justify-content: flex-end;
+}
+
+.corner-bottom-right {
+  grid-area: 3 / 3;
+  align-items: flex-end;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.mold-center {
+  grid-area: 2 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+  min-width: 0;
+  padding: 0.1rem;
+  background-color: #f8fafc;
+  text-align: center;
+}
+
+.mold-center label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  font-size: 0.75rem;
+}
+
+.mold-center input[type="number"] {
+  height: 29px;
+  padding: 0.1rem 0.2rem;
+  font-size: calc(1rem + 1pt);
+}
+
+.sector-prensa-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0 0.45rem 0.45rem;
+  padding: 0.4rem;
+  border: 1px solid var(--border-color);
+  background-color: #f8fafc;
+}
+
+.sector-prensa-notes label {
+  color: var(--primary-navy);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.sector-prensa-notes textarea {
+  min-height: 48px;
+}
+
+@media screen and (max-width: 760px) {
+  .top-action-bar {
+    flex-wrap: wrap;
+    padding: 0.6rem 1rem;
+  }
+
+  .brand-logo {
+    width: min(190px, 45vw);
+    height: auto;
+    max-height: 42px;
+  }
+
+  .actions-zone {
+    margin-left: auto;
+  }
+
+  .header-main-title {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .sheet-title {
+    text-align: left;
+  }
+
+  .header-metadata-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .meta-field {
+    min-width: 0;
+  }
+
+  .meta-field input,
+  .meta-field select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .prensas-dual-container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .esmaltado-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .esmaltado-grid .sector-side-notes {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (min-width: 761px) {
+  .sector-esmaltado .esmaltado-grid {
+    grid-template-columns:
+      minmax(0, 0.65fr)
+      minmax(0, 0.8fr)
+      minmax(0, 0.8fr)
+      minmax(0, 2.45fr);
+  }
+}
+
+/* Tablas industriales */
+.industrial-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.76rem;
+}
+
+.industrial-table th,
+.industrial-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.35rem;
+}
+
+.industrial-table thead th {
+  background-color: #1e3a5f;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.industrial-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.industrial-table td.param-label {
+  font-weight: 600;
+  color: var(--text-muted);
+  width: 46%;
+  font-size: 0.74rem;
+  background-color: #f1f5f9;
+}
+
+.col-molde {
+  width: 18%;
+  text-align: center;
+}
+
+/* Parámetros Generales de Prensa */
+.general-params-block {
+  border: 1px solid var(--border-color);
+  background-color: #f8fafc;
+  padding: 0.35rem 0.45rem;
+  border-radius: 2px;
+}
+
+.sub-block-title {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--primary-navy);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-bottom: 1px dashed var(--border-dark);
+  padding-bottom: 0.15rem;
+}
+
+.params-inline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.param-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.param-item label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notes-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.notes-block label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+}
+
+.notes-block textarea {
+  height: 38px;
+  resize: none;
+}
+
+/* --------------------------------------------------------------------------
+   SECTOR 2: ESMALTADO
+   -------------------------------------------------------------------------- */
+.esmaltado-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 1.8fr);
+  gap: 0.65rem;
+  padding: 0.45rem;
+  background-color: var(--bg-alt);
+}
+
+.material-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.material-header {
+  background-color: #1e3a5f;
+  color: #ffffff;
+  text-align: center;
+  padding: 0.2rem 0.4rem;
+  border-radius: 2px;
+}
+
+.material-header h4 {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.material-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
+.field-row label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: normal;
+  min-width: 0;
+}
+
+.field-row input {
+  width: 62px;
+  min-width: 46px;
+  flex: 0 1 62px;
+}
+
+.esmaltado-grid .field-row label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.esmaltado-grid .field-row input {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.esmaltado-grid .sector-side-notes label {
+  font-size: 0.78rem;
+}
+
+.esmaltado-grid .sector-side-notes textarea {
+  font-size: 0.9rem;
+}
+
+.sector-prensas .prensa-header h4,
+.sector-esmaltado .material-header h4 {
+  font-size: 0.98rem;
+}
+
+.sector-prensas .mold-card legend {
+  font-size: 0.85rem;
+}
+
+.sector-prensas .mold-center label,
+.sector-prensas .param-item label,
+.sector-prensas .sector-prensa-notes label,
+.sector-esmaltado .field-row label,
+.sector-esmaltado .sector-side-notes label,
+.sector-decorado .sector-side-notes label {
+  font-size: 0.85rem;
+}
+
+.sector-prensas .param-item input,
+.sector-prensas .sector-prensa-notes textarea,
+.sector-esmaltado .field-row input,
+.sector-esmaltado .sector-side-notes textarea,
+.sector-decorado .sector-side-notes textarea {
+  font-size: calc(1rem + 1pt);
+}
+
+.sector-side-notes {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.sector-side-notes label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+}
+
+.sector-side-notes textarea {
+  flex: 1;
+  min-height: 75px;
+  resize: none;
+}
+
+/* --------------------------------------------------------------------------
+   SECTOR 3: DECORADO
+   -------------------------------------------------------------------------- */
+.decorado-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.65rem;
+  padding: 0.45rem;
+  background-color: var(--bg-alt);
+}
+
+/* --------------------------------------------------------------------------
+   SECTOR 4: ENTRADA DE HORNOS
+   -------------------------------------------------------------------------- */
+.hornos-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.65rem;
+  padding: 0.45rem;
+  background-color: var(--bg-alt);
+}
+
+.horno-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.horno-card-header {
+  background-color: #1e3a5f;
+  color: #ffffff;
+  padding: 0.2rem 0.4rem;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.horno-card-header h4 {
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.horno-card-body {
+  display: grid;
+  grid-template-columns: minmax(0, 0.4fr) minmax(0, 1.6fr);
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.horno-params-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.35rem;
+}
+
+.field-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.field-col label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.field-col input {
+  width: 100%;
+  font-size: calc(1rem + 1pt);
+  font-weight: 700;
+}
+
+.horno-card-body textarea {
+  flex: 1;
+  min-height: 48px;
+  resize: none;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 520px) {
+  .horno-card-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .horno-params-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   PIE DE HOJA
+   -------------------------------------------------------------------------- */
+.sheet-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  padding: 0.6rem 0.5rem 0.2rem;
+  border-top: 1px solid var(--border-dark);
+}
+
+.footer-sign-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.sign-line {
+  width: 80%;
+  border-bottom: 1px solid var(--text-muted);
+  height: 18px;
+}
+
+.footer-sign-box span {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+.footer-timestamp {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 0.58rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+}
+
+/* ==========================================================================
+   CONFIGURACIÓN DE IMPRESIÓN — REGLAS CRÍTICAS A4 EN UNA SOLA HOJA
+   ========================================================================== */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html, body {
+    width: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .report-sheet {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    border: none !important;
+    /* At this print zoom, 327.4 mm fills A4 while retaining the 6 mm inner margin. */
+    min-height: 327.4mm !important;
+    padding: 6mm !important;
+    box-shadow: none !important;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+    zoom: 0.907;
+  }
+
+  .report-sheet > .sector-block {
+    display: flex !important;
+    flex: 1 0 auto !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+  }
+
+  .report-sheet > .sector-prensas {
+    flex-grow: 2 !important;
+  }
+
+  .sector-esmaltado .esmaltado-grid {
+    grid-template-columns: minmax(0, 0.65fr) minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 2.45fr) !important;
+  }
+
+  .prensas-dual-container,
+  .esmaltado-grid,
+  .decorado-grid,
+  .hornos-grid {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+  }
+
+  .prensas-dual-container {
+    align-items: stretch !important;
+    gap: 1mm !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .prensa-card {
+    min-height: 0 !important;
+    padding-right: 0.35rem !important;
+    padding-left: 0.35rem !important;
+  }
+
+  .moldes-grid {
+    flex: 2 1 auto !important;
+    grid-auto-rows: 1fr !important;
+    gap: 0.35mm !important;
+  }
+
+  .mold-card {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+    padding-right: 0.1rem !important;
+    padding-left: 0.1rem !important;
+  }
+
+  .mold-diagram {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 0.9 / 1 !important;
+  }
+
+  .general-params-block {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+  }
+
+  .params-inline-grid {
+    flex: 1 1 auto !important;
+    align-content: space-between !important;
+  }
+
+  .material-fields {
+    flex: 1 1 auto !important;
+    justify-content: space-around !important;
+  }
+
+  .sector-side-notes,
+  .decorado-notes,
+  .horno-card {
+    min-height: 0 !important;
+  }
+
+  .horno-card-body {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+  }
+
+  .field-col {
+    min-height: 0 !important;
+  }
+
+  input[type="number"] {
+    height: 26px !important;
+  }
+
+  .mold-diagram {
+    grid-template-rows: minmax(0, 0.72fr) minmax(0, 2.56fr) minmax(0, 0.72fr) !important;
+  }
+
+  .mold-center {
+    gap: 1mm !important;
+    padding: 0.2mm !important;
+  }
+
+  .mold-center label {
+    gap: 0.2mm !important;
+    font-size: 6pt !important;
+    line-height: 1.05 !important;
+  }
+
+  .mold-center input[type="number"] {
+    height: 20px !important;
+    padding: 0 1px !important;
+    font-size: 8.5pt !important;
+  }
+
+  .mold-corner input[type="number"] {
+    height: 20px !important;
+    padding: 0 1px !important;
+    font-size: 8.5pt !important;
+  }
+
+  .mold-diagram::after {
+    margin-bottom: 0.2mm !important;
+    font-size: 11pt !important;
+  }
+
+  .prensa-card {
+    gap: 0.5rem !important;
+    padding: 0.55rem !important;
+  }
+
+  .sector-esmaltado .material-card {
+    padding: 1.5mm !important;
+    gap: 1.2mm !important;
+  }
+
+  .sector-esmaltado .material-fields {
+    gap: 1.2mm !important;
+  }
+
+  .sector-esmaltado .field-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.7mm !important;
+  }
+
+  .sector-esmaltado .field-row label {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    font-size: 7pt !important;
+    line-height: 1.1 !important;
+  }
+
+  .sector-esmaltado .field-row input {
+    flex: 0 0 42px !important;
+    width: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
+    height: 20px !important;
+    font-size: 8.5pt !important;
+    padding: 0 1px !important;
+  }
+}
