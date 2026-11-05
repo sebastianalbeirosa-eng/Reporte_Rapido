@@ -159,9 +159,9 @@ html, body {
 
 .header-metadata-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1.4fr 1.2fr 1.6fr 1.2fr;
-  gap: 0.5rem;
-  padding: 0.45rem 0.75rem;
+  grid-template-columns: 0.95fr 1.15fr 1.2fr 1.2fr 0.95fr 1.2fr;
+  gap: 0.35rem;
+  padding: 0.35rem 0.5rem;
   background-color: var(--bg-header-band);
 }
 
@@ -169,13 +169,17 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
+  min-width: 0;
 }
 
 .meta-field label {
-  font-size: 0.65rem;
+  font-size: 0.63rem;
   font-weight: 700;
   color: var(--primary-navy);
   letter-spacing: 0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .meta-field input,
@@ -336,24 +340,29 @@ textarea {
 
 .mold-card {
   min-width: 0;
-  border: 1px solid var(--border-color);
-  padding: 0.2rem;
-  background-color: #f8fafc;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
 }
 
 .mold-card legend {
-  padding: 0 0.15rem;
+  padding: 0 0 0.18rem 0;
   color: var(--primary-navy);
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   font-weight: 800;
   text-align: center;
+  letter-spacing: 0.4px;
+  width: 100%;
 }
 
 .mold-diagram {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 1fr);
-  aspect-ratio: 1;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.55fr) minmax(0, 1.15fr);
+  grid-template-rows: 27px 1fr 27px;
+  min-height: 155px;
   border: 1px solid var(--border-dark);
   background-color: #ffffff;
 }
@@ -368,14 +377,6 @@ textarea {
   background-color: transparent;
 }
 
-.mold-center label {
-  color: var(--text-muted);
-  font-size: 0.68rem;
-  font-weight: 700;
-  line-height: 1.15;
-  white-space: nowrap;
-}
-
 .mold-corner span {
   display: none;
 }
@@ -384,10 +385,10 @@ textarea {
   grid-area: 3 / 2;
   align-self: end;
   justify-self: center;
-  margin-bottom: 0.5mm;
+  margin-bottom: 2px;
   color: var(--primary-navy);
   content: "↓";
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 800;
   line-height: 1;
 }
@@ -396,10 +397,13 @@ textarea {
 .mold-center input {
   width: 100%;
   min-width: 0;
-  height: 27px;
+  height: 26px;
   padding: 0.1rem 0.15rem;
-  font-size: calc(1rem + 1pt);
+  font-size: 1.05rem;
+  font-weight: 800;
   text-align: center;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
 }
 
 .corner-top-left {
@@ -428,10 +432,10 @@ textarea {
   grid-area: 2 / 2;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 0.4rem;
+  justify-content: space-evenly;
+  gap: 0.25rem;
   min-width: 0;
-  padding: 0.1rem;
+  padding: 0.2rem 0.15rem;
   background-color: #f8fafc;
   text-align: center;
 }
@@ -439,14 +443,17 @@ textarea {
 .mold-center label {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
-  font-size: 0.75rem;
+  gap: 0.12rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #334155;
 }
 
 .mold-center input[type="number"] {
-  height: 29px;
+  height: 26px;
   padding: 0.1rem 0.2rem;
-  font-size: calc(1rem + 1pt);
+  font-size: 1.05rem;
+  font-weight: 800;
 }
 
 .sector-prensa-notes {
@@ -488,14 +495,22 @@ textarea {
   .header-main-title {
     flex-wrap: wrap;
     justify-content: flex-start;
+    padding: 0.3rem 0.5rem;
   }
 
   .sheet-title {
     text-align: left;
+    font-size: 0.8rem;
+  }
+
+  .sheet-subtitle {
+    font-size: 0.6rem;
   }
 
   .header-metadata-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem;
+    padding: 0.35rem 0.5rem;
   }
 
   .meta-field {
@@ -506,28 +521,106 @@ textarea {
   .meta-field select {
     width: 100%;
     min-width: 0;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .report-sheet {
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    gap: 0.45rem;
   }
 
   .prensas-dual-container {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .esmaltado-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .moldes-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.3rem;
   }
 
-  .esmaltado-grid .sector-side-notes {
+  .params-inline-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.3rem;
+  }
+
+  .esmaltado-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
+    padding: 0.35rem;
+  }
+
+  .decorado-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
+    padding: 0.35rem;
+  }
+
+  .esmaltado-grid .sector-side-notes,
+  .decorado-grid .sector-side-notes {
     grid-column: 1 / -1;
+  }
+
+  .hornos-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem;
+    padding: 0.35rem;
+  }
+
+  .field-row input,
+  .esmaltado-grid .field-row input,
+  .decorado-grid .field-row input {
+    flex: 0 0 80px;
+    width: 80px;
+    max-width: 80px;
+    height: 30px;
+    font-size: 1rem;
+  }
+
+  .horno-params-card .field-row label {
+    min-width: auto;
+  }
+
+  .sector-title-bar {
+    padding: 0.3rem 0.5rem;
+  }
+
+  .sector-title {
+    font-size: 0.8rem;
+  }
+
+  .sector-tagline {
+    font-size: 0.55rem;
+  }
+
+  .sheet-footer {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
 }
 
 @media screen and (min-width: 761px) {
   .sector-esmaltado .esmaltado-grid {
     grid-template-columns:
-      minmax(0, 0.65fr)
-      minmax(0, 0.8fr)
-      minmax(0, 0.8fr)
-      minmax(0, 2.45fr);
+      minmax(0, 1fr)
+      minmax(0, 1fr)
+      minmax(0, 1fr)
+      minmax(0, 1.4fr);
+  }
+
+  .sector-decorado .decorado-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr)
+      minmax(0, 1.15fr)
+      minmax(0, 1.35fr);
+  }
+
+  .sector-hornos .hornos-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1.8fr);
   }
 }
 
@@ -632,7 +725,7 @@ textarea {
    -------------------------------------------------------------------------- */
 .esmaltado-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.75fr) minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 1.8fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.4fr);
   gap: 0.65rem;
   padding: 0.45rem;
   background-color: var(--bg-alt);
@@ -641,14 +734,14 @@ textarea {
 .material-card {
   background-color: #ffffff;
   border: 1px solid var(--border-color);
-  padding: 0.4rem;
+  padding: 0.35rem 0.45rem;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
 
 .material-header {
-  background-color: #1e3a5f;
+  background-color: var(--primary-navy);
   color: #ffffff;
   text-align: center;
   padding: 0.2rem 0.4rem;
@@ -656,7 +749,7 @@ textarea {
 }
 
 .material-header h4 {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 800;
   letter-spacing: 0.5px;
 }
@@ -664,51 +757,77 @@ textarea {
 .material-fields {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  justify-content: space-between;
+  gap: 0.35rem;
+  height: 100%;
 }
 
 .field-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.35rem;
+  gap: 0.4rem;
+  width: 100%;
 }
 
 .field-row label {
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
   color: var(--text-muted);
-  white-space: normal;
-  min-width: 0;
+  white-space: nowrap;
+  min-width: fit-content;
+  flex: 0 0 auto;
+  line-height: 1.2;
 }
 
 .field-row input {
-  width: 62px;
-  min-width: 46px;
-  flex: 0 1 62px;
+  flex: 0 0 76px;
+  width: 76px;
+  max-width: 76px;
+  min-width: 50px;
+  height: 25px;
+  margin-left: auto;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  text-align: center;
 }
 
 .esmaltado-grid .field-row label {
   font-size: 0.82rem;
   font-weight: 700;
   line-height: 1.2;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .esmaltado-grid .field-row input {
-  font-size: 1.05rem;
+  flex: 0 0 76px;
+  width: 76px;
+  max-width: 76px;
+  min-width: 50px;
+  height: 25px;
+  margin-left: auto;
+  font-size: 1rem;
   font-weight: 700;
+  border: 1px solid var(--border-color);
 }
 
 .esmaltado-grid .sector-side-notes label {
   font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary-navy);
 }
 
 .esmaltado-grid .sector-side-notes textarea {
   font-size: 0.9rem;
+  border: 1px solid var(--border-color);
 }
 
 .sector-prensas .prensa-header h4,
-.sector-esmaltado .material-header h4 {
+.sector-esmaltado .material-header h4,
+.sector-decorado .material-header h4 {
   font-size: 0.98rem;
 }
 
@@ -721,7 +840,10 @@ textarea {
 .sector-prensas .sector-prensa-notes label,
 .sector-esmaltado .field-row label,
 .sector-esmaltado .sector-side-notes label,
-.sector-decorado .sector-side-notes label {
+.sector-decorado .field-row label,
+.sector-decorado .sector-side-notes label,
+.sector-hornos .horno-param-item label,
+.sector-hornos .horno-notes label {
   font-size: 0.85rem;
 }
 
@@ -729,7 +851,10 @@ textarea {
 .sector-prensas .sector-prensa-notes textarea,
 .sector-esmaltado .field-row input,
 .sector-esmaltado .sector-side-notes textarea,
-.sector-decorado .sector-side-notes textarea {
+.sector-decorado .field-row input,
+.sector-decorado .sector-side-notes textarea,
+.sector-hornos .horno-param-item input,
+.sector-hornos .horno-notes textarea {
   font-size: calc(1rem + 1pt);
 }
 
@@ -759,92 +884,198 @@ textarea {
    -------------------------------------------------------------------------- */
 .decorado-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1.35fr);
   gap: 0.65rem;
   padding: 0.45rem;
   background-color: var(--bg-alt);
+}
+
+.decorado-grid .field-row label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.decorado-grid .field-row input {
+  flex: 0 0 76px;
+  width: 76px;
+  max-width: 76px;
+  min-width: 50px;
+  height: 25px;
+  margin-left: auto;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 1px solid var(--border-color);
+}
+
+.decorado-notes textarea {
+  font-size: 0.9rem;
+  border: 1px solid var(--border-color);
 }
 
 /* --------------------------------------------------------------------------
-   SECTOR 4: ENTRADA DE HORNOS
+   SECTOR 4: ENTRADA DE HORNOS (COMPACTO)
    -------------------------------------------------------------------------- */
 .hornos-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
   gap: 0.65rem;
   padding: 0.45rem;
   background-color: var(--bg-alt);
 }
 
-.horno-card {
+.horno-params-card {
   background-color: #ffffff;
   border: 1px solid var(--border-color);
-  padding: 0.4rem;
+  padding: 0.45rem 0.65rem;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-}
-
-.horno-card-header {
-  background-color: #1e3a5f;
-  color: #ffffff;
-  padding: 0.2rem 0.4rem;
-  text-align: center;
-  border-radius: 2px;
-}
-
-.horno-card-header h4 {
-  font-size: 0.98rem;
-  font-weight: 800;
-  letter-spacing: 0.4px;
-}
-
-.horno-card-body {
-  display: grid;
-  grid-template-columns: minmax(0, 0.4fr) minmax(0, 1.6fr);
-  gap: 0.3rem;
-  flex: 1;
-}
-
-.horno-params-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
   gap: 0.35rem;
+  justify-content: center;
 }
 
-.field-col {
+.horno-params-card .field-row input {
+  flex: 0 0 70px;
+  width: 70px;
+  max-width: 70px;
+  height: 24px;
+  margin-left: auto;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  text-align: center;
+}
+
+.horno-params-card .field-row label {
+  min-width: 135px;
+}
+
+.horno-notes {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 0.45rem 0.65rem;
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
-  min-width: 0;
+  gap: 0.25rem;
 }
 
-.field-col label {
-  font-size: 0.85rem;
+.horno-notes label {
+  font-size: 0.78rem;
   font-weight: 700;
-  color: var(--text-muted);
+  color: var(--primary-navy);
 }
 
-.field-col input {
-  width: 100%;
-  font-size: calc(1rem + 1pt);
-  font-weight: 700;
-}
-
-.horno-card-body textarea {
+.horno-notes textarea {
   flex: 1;
-  min-height: 48px;
+  min-height: 60px;
+  height: 60px;
   resize: none;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.5rem;
 }
 
 @media screen and (max-width: 520px) {
-  .horno-card-body {
+  .report-sheet {
+    margin: 0;
+    padding: 0.35rem;
+    gap: 0.35rem;
+  }
+
+  .header-main-title {
+    padding: 0.25rem 0.4rem;
+  }
+
+  .company-logo-text {
+    font-size: 0.7rem;
+  }
+
+  .sheet-title {
+    font-size: 0.7rem;
+  }
+
+  .header-metadata-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.3rem;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .meta-field input,
+  .meta-field select {
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  .moldes-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.35rem;
+  }
+
+  .params-inline-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .horno-params-grid {
+  .esmaltado-grid,
+  .decorado-grid {
     grid-template-columns: minmax(0, 1fr);
+    gap: 0.35rem;
+  }
+
+  .hornos-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .field-row {
+    gap: 0.4rem;
+  }
+
+  .field-row input,
+  .esmaltado-grid .field-row input,
+  .decorado-grid .field-row input {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+    height: 34px;
+    font-size: 1.1rem;
+  }
+
+  .field-row label,
+  .esmaltado-grid .field-row label,
+  .decorado-grid .field-row label {
+    font-size: 0.85rem;
+  }
+
+  .horno-params-card .field-row label {
+    min-width: auto;
+  }
+
+  .material-header h4 {
+    font-size: 0.85rem;
+  }
+
+  .mold-diagram {
+    min-height: 140px;
+  }
+
+  .mold-corner input[type="number"],
+  .mold-center input[type="number"] {
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .sector-side-notes textarea,
+  .horno-notes textarea {
+    min-height: 80px;
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 }
 
@@ -888,7 +1119,9 @@ textarea {
 }
 
 /* ==========================================================================
-   CONFIGURACIÓN DE IMPRESIÓN — REGLAS CRÍTICAS A4 EN UNA SOLA HOJA
+   CONFIGURACIÓN DE IMPRESIÓN — REGLA DE ORO: MISMA VISTA QUE PANTALLA
+   Solo se ajusta: ocultar barra, caber en A4, preservar colores.
+   NO se sobreescriben layouts, tamaños de inputs, grids ni proporciones.
    ========================================================================== */
 @page {
   size: A4 portrait;
@@ -896,198 +1129,137 @@ textarea {
 }
 
 @media print {
+  /* Ocultar barra de acciones */
   .no-print {
     display: none !important;
   }
 
+  /* Preservar colores de fondo en impresión */
   *, *::before, *::after {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
+  /* Reset de página */
   html, body {
     width: 100% !important;
-    min-height: 0 !important;
+    height: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     background: #ffffff !important;
   }
 
+  /* Hoja principal — llenar el alto A4 en 1 página completa */
   .report-sheet {
     width: 100% !important;
     max-width: none !important;
     margin: 0 !important;
+    box-sizing: border-box !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    padding: 3.5mm 5mm !important;
     border: none !important;
-    /* At this print zoom, 327.4 mm fills A4 while retaining the 6 mm inner margin. */
-    min-height: 327.4mm !important;
-    padding: 6mm !important;
     box-shadow: none !important;
-    break-inside: avoid-page;
-    page-break-inside: avoid;
-    zoom: 0.907;
-  }
-
-  .report-sheet > .sector-block {
     display: flex !important;
-    flex: 1 0 auto !important;
     flex-direction: column !important;
-    min-height: 0 !important;
+    justify-content: space-between !important;
+    gap: 1.5mm !important;
+    break-inside: avoid-page !important;
+    page-break-inside: avoid !important;
   }
 
-  .report-sheet > .sector-prensas {
-    flex-grow: 2 !important;
-  }
-
-  .sector-esmaltado .esmaltado-grid {
-    grid-template-columns: minmax(0, 0.65fr) minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 2.45fr) !important;
-  }
-
-  .prensas-dual-container,
-  .esmaltado-grid,
-  .decorado-grid,
-  .hornos-grid {
-    flex: 1 1 auto !important;
-    min-height: 0 !important;
+  .sector-prensas {
+    flex: 1.5 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .prensas-dual-container {
-    align-items: stretch !important;
-    gap: 1mm !important;
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-  }
-
-  .prensa-card {
-    min-height: 0 !important;
-    padding-right: 0.35rem !important;
-    padding-left: 0.35rem !important;
+    flex: 1 1 auto !important;
   }
 
   .moldes-grid {
-    flex: 2 1 auto !important;
-    grid-auto-rows: 1fr !important;
-    gap: 0.35mm !important;
+    flex: 1 1 auto !important;
   }
 
   .mold-card {
     display: flex !important;
     flex-direction: column !important;
-    min-height: 0 !important;
-    padding-right: 0.1rem !important;
-    padding-left: 0.1rem !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: transparent !important;
   }
 
-  .mold-diagram {
-    flex: 0 0 auto !important;
+  .mold-card legend {
+    padding: 0 0 0.8mm 0 !important;
+    font-size: 7.2pt !important;
+    font-weight: 800 !important;
+    color: var(--primary-navy) !important;
+    text-align: center !important;
     width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    aspect-ratio: 0.9 / 1 !important;
-  }
-
-  .general-params-block {
-    display: flex !important;
-    flex: 1 1 auto !important;
-    flex-direction: column !important;
-    min-height: 0 !important;
-  }
-
-  .params-inline-grid {
-    flex: 1 1 auto !important;
-    align-content: space-between !important;
-  }
-
-  .material-fields {
-    flex: 1 1 auto !important;
-    justify-content: space-around !important;
-  }
-
-  .sector-side-notes,
-  .decorado-notes,
-  .horno-card {
-    min-height: 0 !important;
-  }
-
-  .horno-card-body {
-    flex: 1 1 auto !important;
-    min-height: 0 !important;
-  }
-
-  .field-col {
-    min-height: 0 !important;
-  }
-
-  input[type="number"] {
-    height: 26px !important;
   }
 
   .mold-diagram {
-    grid-template-rows: minmax(0, 0.72fr) minmax(0, 2.56fr) minmax(0, 0.72fr) !important;
-  }
-
-  .mold-center {
-    gap: 1mm !important;
-    padding: 0.2mm !important;
-  }
-
-  .mold-center label {
-    gap: 0.2mm !important;
-    font-size: 6pt !important;
-    line-height: 1.05 !important;
-  }
-
-  .mold-center input[type="number"] {
-    height: 20px !important;
-    padding: 0 1px !important;
-    font-size: 8.5pt !important;
-  }
-
-  .mold-corner input[type="number"] {
-    height: 20px !important;
-    padding: 0 1px !important;
-    font-size: 8.5pt !important;
-  }
-
-  .mold-diagram::after {
-    margin-bottom: 0.2mm !important;
-    font-size: 11pt !important;
-  }
-
-  .prensa-card {
-    gap: 0.5rem !important;
-    padding: 0.55rem !important;
-  }
-
-  .sector-esmaltado .material-card {
-    padding: 1.5mm !important;
-    gap: 1.2mm !important;
-  }
-
-  .sector-esmaltado .material-fields {
-    gap: 1.2mm !important;
-  }
-
-  .sector-esmaltado .field-row {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 0.7mm !important;
-  }
-
-  .sector-esmaltado .field-row label {
     flex: 1 1 auto !important;
-    min-width: 0 !important;
-    font-size: 7pt !important;
-    line-height: 1.1 !important;
+    min-height: 155px !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr) minmax(0, 1fr) !important;
   }
 
-  .sector-esmaltado .field-row input {
-    flex: 0 0 42px !important;
-    width: 42px !important;
-    min-width: 42px !important;
-    max-width: 42px !important;
-    height: 20px !important;
-    font-size: 8.5pt !important;
+  .mold-corner input,
+  .mold-center input {
+    width: 100% !important;
+    min-width: 0 !important;
     padding: 0 1px !important;
+  }
+
+  .sector-esmaltado {
+    flex: 0 0 auto !important;
+  }
+
+  .sector-decorado {
+    flex: 0 0 auto !important;
+  }
+
+  .sector-esmaltado .field-row input,
+  .sector-decorado .field-row input {
+    flex: 0 0 80px !important;
+    width: 80px !important;
+    max-width: 80px !important;
+    height: 26.5px !important;
+  }
+
+  .sector-hornos {
+    flex: 1.1 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .hornos-grid {
+    flex: 1 1 auto !important;
+  }
+
+  .horno-notes textarea {
+    height: 100% !important;
+    min-height: 50px !important;
+  }
+
+  .sector-side-notes textarea,
+  .decorado-notes textarea {
+    height: 100% !important;
+  }
+
+  /* Evitar saltos de página dentro de sectores */
+  .sector-block,
+  .report-header,
+  .sheet-footer {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Textareas: quitar resize en impresión */
+  textarea {
+    resize: none !important;
   }
 }

@@ -9,7 +9,7 @@
     <meta property="og:description" content="Digital sheet for logging industrial production parameters for ceramic manufacturing." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="./styles.css?v=23" />
+    <link rel="stylesheet" href="./styles.css?v=36" />
   </head>
   <body>
     <!-- BARRA SUPERIOR DE ACCIONES (SOLO PANTALLA) -->
@@ -60,6 +60,10 @@
           <div class="meta-field">
             <label for="meta-formato">FORMATO:</label>
             <input type="text" id="meta-formato" name="formato" />
+          </div>
+          <div class="meta-field">
+            <label for="meta-humedad">HUMEDAD %:</label>
+            <input type="text" id="meta-humedad" name="humedad" />
           </div>
         </div>
       </section>
@@ -257,6 +261,10 @@
                 <label for="esm-agua-peso">Peso (g):</label>
                 <input type="number" step="any" id="esm-agua-peso" />
               </div>
+              <div class="field-row">
+                <label for="esm-agua-picos">Picos:</label>
+                <input type="number" min="0" step="1" id="esm-agua-picos" />
+              </div>
             </div>
           </div>
 
@@ -271,11 +279,11 @@
                 <input type="number" step="any" id="esm-engobe-peso" />
               </div>
               <div class="field-row">
-                <label for="esm-engobe-densidad">Densidad (g/cm³):</label>
+                <label for="esm-engobe-densidad">Densidad:</label>
                 <input type="number" step="any" id="esm-engobe-densidad" />
               </div>
               <div class="field-row">
-                <label for="esm-engobe-viscosidad">Viscosidad (s / Ford 4):</label>
+                <label for="esm-engobe-viscosidad">Viscosidad:</label>
                 <input type="number" step="any" id="esm-engobe-viscosidad" />
               </div>
             </div>
@@ -292,11 +300,11 @@
                 <input type="number" step="any" id="esm-base-peso" />
               </div>
               <div class="field-row">
-                <label for="esm-base-densidad">Densidad (g/cm³):</label>
+                <label for="esm-base-densidad">Densidad:</label>
                 <input type="number" step="any" id="esm-base-densidad" />
               </div>
               <div class="field-row">
-                <label for="esm-base-viscosidad">Viscosidad (s / Ford 4):</label>
+                <label for="esm-base-viscosidad">Viscosidad:</label>
                 <input type="number" step="any" id="esm-base-viscosidad" />
               </div>
             </div>
@@ -315,13 +323,89 @@
         <div class="sector-title-bar">
           <span class="sector-number">3</span>
           <h3 class="sector-title">SECTOR DECORADO</h3>
-          <span class="sector-tagline">NOVEDADES Y OBSERVACIONES DEL SECTOR</span>
+          <span class="sector-tagline">CONTROL DE ROTOCOLOR, KERAJET Y CABINA DE DISCOS</span>
         </div>
 
         <div class="decorado-grid">
+          <!-- Rotocolor -->
+          <div class="material-card">
+            <div class="material-header">
+              <h4>ROTOCOLOR</h4>
+            </div>
+            <div class="material-fields">
+              <div class="field-row">
+                <label for="dec-roto-tipo">Tipo rodillo:</label>
+                <input type="text" id="dec-roto-tipo" />
+              </div>
+              <div class="field-row">
+                <label for="dec-roto-densidad">Densidad:</label>
+                <input type="number" step="any" id="dec-roto-densidad" />
+              </div>
+              <div class="field-row">
+                <label for="dec-roto-viscosidad">Viscosidad:</label>
+                <input type="number" step="any" id="dec-roto-viscosidad" />
+              </div>
+              <div class="field-row">
+                <label for="dec-roto-peso">Peso:</label>
+                <input type="number" step="any" id="dec-roto-peso" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Kerajet -->
+          <div class="material-card">
+            <div class="material-header">
+              <h4>KERAJET</h4>
+            </div>
+            <div class="material-fields">
+              <div class="field-row">
+                <label for="dec-kerajet-altura">Altura:</label>
+                <input type="number" step="any" id="dec-kerajet-altura" />
+              </div>
+              <div class="field-row">
+                <label for="dec-kerajet-limpieza">Limpieza:</label>
+                <input type="text" id="dec-kerajet-limpieza" />
+              </div>
+              <div class="field-row">
+                <label for="dec-kerajet-tintas">N° tintas:</label>
+                <input type="number" min="0" step="1" id="dec-kerajet-tintas" />
+              </div>
+              <div class="field-row">
+                <label for="dec-kerajet-velocidad">Velocidad:</label>
+                <input type="number" step="any" id="dec-kerajet-velocidad" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Cabina de Discos -->
+          <div class="material-card">
+            <div class="material-header">
+              <h4>CABINA DE DISCOS</h4>
+            </div>
+            <div class="material-fields">
+              <div class="field-row">
+                <label for="dec-discos-cantidad">Cantidad discos:</label>
+                <input type="number" min="0" step="1" id="dec-discos-cantidad" />
+              </div>
+              <div class="field-row">
+                <label for="dec-discos-densidad">Densidad:</label>
+                <input type="number" step="any" id="dec-discos-densidad" />
+              </div>
+              <div class="field-row">
+                <label for="dec-discos-viscosidad">Viscosidad:</label>
+                <input type="number" step="any" id="dec-discos-viscosidad" />
+              </div>
+              <div class="field-row">
+                <label for="dec-discos-peso">Peso:</label>
+                <input type="number" step="any" id="dec-discos-peso" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Observaciones Decorado -->
           <div class="sector-side-notes decorado-notes">
             <label for="dec-obs">Novedades y Observaciones de Decorado:</label>
-            <textarea id="dec-obs" rows="3"></textarea>
+            <textarea id="dec-obs" rows="4"></textarea>
           </div>
         </div>
       </section>
@@ -335,30 +419,24 @@
         </div>
 
         <div class="hornos-grid">
-          <div class="horno-card">
-            <div class="horno-card-header">
-              <h4>CONTROL DE ENTRADA DE HORNOS</h4>
+          <div class="horno-params-card">
+            <div class="field-row">
+              <label for="horno-vacios-minutos">Minutos de vacíos:</label>
+              <input type="number" min="0" step="any" id="horno-vacios-minutos" />
             </div>
-            <div class="horno-card-body">
-              <div class="horno-params-grid">
-                <div class="field-col">
-                  <label for="horno-vacios-minutos">Minutos de vacíos totales del turno:</label>
-                  <input type="number" min="0" step="any" id="horno-vacios-minutos" />
-                </div>
-                <div class="field-col">
-                  <label for="horno-pisos-stock-boxes">Pisos en stock en boxes:</label>
-                  <input type="number" min="0" step="1" id="horno-pisos-stock-boxes" />
-                </div>
-                <div class="field-col">
-                  <label for="horno-ciclo">Ciclo de horno:</label>
-                  <input type="number" min="0" step="any" id="horno-ciclo" />
-                </div>
-              </div>
-              <div class="field-col">
-                <label for="horno-obs">Observaciones de entrada de hornos:</label>
-                <textarea id="horno-obs" rows="3"></textarea>
-              </div>
+            <div class="field-row">
+              <label for="horno-pisos-stock-boxes">Pisos stock boxes:</label>
+              <input type="number" min="0" step="1" id="horno-pisos-stock-boxes" />
             </div>
+            <div class="field-row">
+              <label for="horno-ciclo">Ciclo de horno:</label>
+              <input type="number" min="0" step="any" id="horno-ciclo" />
+            </div>
+          </div>
+
+          <div class="sector-side-notes horno-notes">
+            <label for="horno-obs">Observaciones de entrada de hornos:</label>
+            <textarea id="horno-obs" rows="3"></textarea>
           </div>
         </div>
       </section>
